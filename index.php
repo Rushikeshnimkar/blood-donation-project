@@ -11,7 +11,7 @@
     
         <nav class="navbar bg-dark">
             <div class="container">
-                <a href="index.php">Blood Donations</a>
+            <a class="navbar-brand text-bg-dark" href="index.php">Blood Donations</a>
             </div>
         </nav>
     <script src="js/bootstrap.min.js"></script>
