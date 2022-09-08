@@ -39,14 +39,14 @@
     <main>
         <div class="container body-container">
             <div class="row justify-content-center">
-           
-                    <h3 class="w-50 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Welcome to the Blood Donation Camp!</h3>
-                    <h5 class="m-2 text-center fw-normal">Blood donation is a voluntary procedure that can help save lives. There are several types of blood donation. Each type helps meet different medical needs. The blood donation process from the time you arrive until the time you leave takes about an hour. The donation itself is only about 8-10 minutes on average.</h5>
-    
+
+                <h3 class="w-50 p-2 bg-primary bg-gradient rounded-5 m-4 text-center">Welcome to the Blood Donation Camp!</h3>
+                <h5 class="m-2 text-center fw-normal">Blood donation is a voluntary procedure that can help save lives. There are several types of blood donation. Each type helps meet different medical needs. The blood donation process from the time you arrive until the time you leave takes about an hour. The donation itself is only about 8-10 minutes on average.</h5>
+
             </div>
 
             <div class="row justify-content-center">
-                <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 text-center">Why it's done?</h3>
+                <h3 class="w-25 p-2 m-4 m-4 bg-primary bg-gradient rounded-5 text-center">Why it's done?</h3>
                 <p class="text-center fs-5">You agree to have blood drawn so that it can be given to someone who needs a blood transfusion.
                     <br>
                     Millions of people need blood transfusions each year. Some may need blood during surgery. Others depend on it after an accident or because they have a disease that requires certain parts of blood. Blood donation makes all of this possible. There is no substitute for human blood — all transfusions use blood from a donor.
@@ -55,7 +55,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 text-center">How it's done?</h3>
+                <h3 class="w-25 p-2 m-4 bg-primary bg-gradient rounded-5 text-center">How it's done?</h3>
             </div>
 
             <div class="row justify-content-center">
@@ -65,7 +65,9 @@
                 </div>
                 <div class="col my-3">
                     <ul>
-                        <li>If you’re donating whole blood, we’ll cleanse an area on your arm and insert a brand new sterile needle for the blood draw. (This feels like a quick pinch and is over in seconds.)</li>
+                        <li>
+                            If you’re donating whole blood, we’ll cleanse an area on your arm and insert a brand new sterile needle for the blood draw. (This feels like a quick pinch and is over in seconds.)
+                        </li>
                         <li>
                             Other types of donations, such as platelets, are made using an apheresis machine which will be connected to both arms.
                         </li>
@@ -80,6 +82,45 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <h3 class="w-50 p-2 m-4 bg-primary bg-gradient rounded-5 text-center">Refreshment and Recovery</h3>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="col my-3 mx-nt">
+                    <img src="images/2.jpeg" alt="thankyou.jpg" height="315">
+                </div>
+                <div class="col my-3">
+                    <ul>
+                        <li>
+                            After donating blood, you’ll have a snack and something to drink in the refreshment area.
+                        </li>
+                        <br>
+                        <li>
+                            You’ll leave after 10-15 minutes and continue your normal routine.
+                        </li>
+                        <br>
+                        <li>
+                            Enjoy the feeling of accomplishment knowing you are helping to save lives.
+                        </li>
+                        <br>
+                        <li>
+                            Take a selfie, or simply share your good deed with friends. It may inspire them to become blood donors.
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <h3 class="w-25 p-2 m-4 bg-danger bg-gradient rounded-5 text-center">
+                    <a style="color:black; text-decoration: none;" href="./donate.php">Donate Here!</a>
+                </h3>
+
             </div>
         </div>
     </main>

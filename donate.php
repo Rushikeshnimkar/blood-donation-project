@@ -37,16 +37,24 @@
     </nav>
 
     <main>
-        <div class="container-fluid body-container">
+        <div class="container body-container">
             <div class="row this-row justify-content-center">
-                <div class="col-6">
-                    <h3>Donate Blood!</h3>
+        
+                <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Donate Blood</h3>
                 </div>
 
             </div>
         </div>
+
+        <div class="container body-container">
+            <div class="row justify-content-center">
+                
+            </div>
+        </div>
+        
     </main>
+    
+    
     <script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>
