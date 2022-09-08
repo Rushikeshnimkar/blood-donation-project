@@ -37,16 +37,35 @@
     </nav>
 
     <main>
-        <div class="container-fluid body-container">
+        <div class="container body-container">
             <div class="row this-row justify-content-center">
-                <div class="col-6">
-                    <h3>Sign In!</h3>
+        
+                <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Sign In</h3>
                 </div>
 
             </div>
         </div>
+
+        <div class="container body-container">
+            <div class="row justify-content-center">
+            <form action="submit.php" method="post" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Username</label>
+                        <input type="username" name="username" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword4">
+                    </div>                    
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Sign in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
     </main>
+    
     <script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>

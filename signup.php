@@ -31,20 +31,67 @@
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
                 </li>
+
             </ul>
         </div>
     </nav>
 
     <main>
-        <div class="container-fluid body-container">
+        <div class="container body-container">
             <div class="row this-row justify-content-center">
-                <div class="col-6">
-                    <h3>Sign Up!</h3>
-                </div>
+                <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Sign Up</h3>
+            </div>
 
+        </div>
+        </div>
+
+        <div class="container body-container">
+            <div class="row justify-content-center">
+                <form action="submit.php" method="post" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Email</label>
+                        <input type="email" name="password" class="form-control" id="inputPassword4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Username</label>
+                        <input type="username" name="username" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">City</label>
+                        <input type="text" name="city" class="form-control" id="inputCity">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">State</label>
+                        <select id="inputState" name="state" class="form-select">
+                            <option selected disabled>Choose...</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Punjab">Punjab</option>
+                        </select>
+                    </div>
+                    
+                    
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
             </div>
         </div>
+
+
+
     </main>
+
     <script src="js/bootstrap.min.js"></script>
 </body>
 

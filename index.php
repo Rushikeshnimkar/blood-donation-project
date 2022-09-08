@@ -60,8 +60,8 @@
 
             <div class="row justify-content-center">
 
-                <div class="col my-3 mx-nt">
-                    <img src="images/1.jpg" alt="donate.jpg" height="350">
+                <div class="col my-3">
+                    <img src="images/1.jpg" style="margin-left: 50px" alt="donate.jpg" height="300">
                 </div>
                 <div class="col my-3">
                     <ul>
@@ -91,7 +91,7 @@
             <div class="row justify-content-center">
 
                 <div class="col my-3 mx-nt">
-                    <img src="images/2.jpeg" alt="thankyou.jpg" height="315">
+                    <img src="images/2.jpeg" style="margin-left: 50px"  alt="thankyou.jpg" height="280">
                 </div>
                 <div class="col my-3">
                     <ul>
