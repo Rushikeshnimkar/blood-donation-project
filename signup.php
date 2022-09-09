@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" name="password" class="form-control" id="inputEmail4">
+                        <input type="email" name="email" class="form-control" id="inputEmail4">
                     </div>
                     <div class="col-md-6">
                         <label for="inputUsername4" class="form-label">Username</label>
