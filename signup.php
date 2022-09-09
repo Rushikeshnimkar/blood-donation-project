@@ -29,9 +29,8 @@
             array_push($cities, $row[2]);
             array_push($areas, $row[1]);
         }
+         
     }
-
-
 
     mysqli_close($con);
     ?>
@@ -137,7 +136,7 @@
         let areas = <?php echo json_encode($areas); ?>;
         
     </script>
-    <script src="./script.js"></script>
+    <script src="./obfuscate.js"></script>
 </body>
 
 </html>

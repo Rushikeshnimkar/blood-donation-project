@@ -8,9 +8,6 @@ for(let i = 0; i < states.length; i++) {
     })
 }
 
-
-
-
 let stateInput = document.getElementById("inputState")
 let cityInput = document.getElementById("inputCity");
 let areaInput = document.getElementById("inputArea");
@@ -48,7 +45,6 @@ const displayCities = (state) => {
     })
 
 }
-
 
 const displayAreas= (city) => {
     let areas = [];
