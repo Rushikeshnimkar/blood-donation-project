@@ -21,7 +21,6 @@
 
     if ($result = mysqli_query($con, "SELECT * FROM addresses")) {
         $rows = mysqli_fetch_all($result);
-        echo print_r($result);
     }
 
 
