@@ -13,26 +13,26 @@
 <body>
 
     <?php
-    $con = new mysqli("localhost", "root", "", "blood_donation");
-    if ($con->connect_errno) {
-        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-        exit();
-    }
-
-    if ($result = mysqli_query($con, "SELECT * FROM addresses")) {
-        $rows = mysqli_fetch_all($result);
-        $states = array();
-        $cities = array();
-        $areas = array();
-        foreach ($rows as $row) {
-            array_push($states, $row[3]);
-            array_push($cities, $row[2]);
-            array_push($areas, $row[1]);
+        $con = new mysqli("localhost", "root", "", "blood_donation");
+        if ($con->connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+            exit();
         }
-         
-    }
 
-    mysqli_close($con);
+        if ($result = mysqli_query($con, "SELECT * FROM addresses")) {
+            $rows = mysqli_fetch_all($result);
+            $states = array();
+            $cities = array();
+            $areas = array();
+            foreach ($rows as $row) {
+                array_push($states, $row[3]);
+                array_push($cities, $row[2]);
+                array_push($areas, $row[1]);
+            }
+            
+        }
+
+        mysqli_close($con);
     ?>
 
 
