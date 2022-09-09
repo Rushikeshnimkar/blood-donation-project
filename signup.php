@@ -21,12 +21,22 @@
 
     if ($result = mysqli_query($con, "SELECT * FROM addresses")) {
         $rows = mysqli_fetch_all($result);
+        $states = array();
+        $cities = array();
+        $areas = array();
+        foreach ($rows as $row) {
+            array_push($states, $row[3]);
+            array_push($cities, $row[2]);
+            array_push($areas, $row[1]);
+        }
     }
 
 
 
     mysqli_close($con);
     ?>
+
+
 
     <nav class="navbar navbar-expand-lg bg-dark ">
         <div class="container-fluid">
@@ -65,16 +75,16 @@
             <div class="row justify-content-center">
                 <form action="submit.php" method="post" class="row g-3 m-4">
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="inputEmail4">
+                        <label for="inputName4" class="form-label">Name</label>
+                        <input type="text" name="name" class="form-control" id="inputName4">
                     </div>
                     <div class="col-md-6">
-                        <label for="inputPassword4" class="form-label">Email</label>
-                        <input type="email" name="password" class="form-control" id="inputPassword4">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input type="email" name="password" class="form-control" id="inputEmail4">
                     </div>
                     <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label">Username</label>
-                        <input type="username" name="username" class="form-control" id="inputEmail4">
+                        <label for="inputUsername4" class="form-label">Username</label>
+                        <input type="username" name="username" class="form-control" id="inputUsername4">
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Password</label>
@@ -119,6 +129,14 @@
     </main>
 
     <script src="js/bootstrap.min.js"></script>
+    <script>
+        let states = <?php echo json_encode($states); ?>;
+
+        let cities = <?php echo json_encode($cities); ?>;
+
+        let areas = <?php echo json_encode($areas); ?>;
+        
+    </script>
     <script src="./script.js"></script>
 </body>
 
