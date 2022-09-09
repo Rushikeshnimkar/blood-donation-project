@@ -13,20 +13,20 @@
 <body>
 
     <?php
-        $con = new mysqli("localhost", "root", "", "blood_donation");
-        if ($con->connect_errno) {
-            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-            exit();
-        }
+    $con = new mysqli("localhost", "root", "", "blood_donation");
+    if ($con->connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+        exit();
+    }
 
-        if($result = mysqli_query($con, "SELECT * FROM addresses")) {
-            $row = mysqli_fetch_all($result);
-            echo print_r($row);
-            echo "<br>";
-            echo print_r($row[3]);
-        }
+    if ($result = mysqli_query($con, "SELECT * FROM addresses")) {
+        $rows = mysqli_fetch_all($result);
+        echo print_r($result);
+    }
 
-        mysqli_close($con);
+
+
+    mysqli_close($con);
     ?>
 
     <nav class="navbar navbar-expand-lg bg-dark ">
@@ -59,7 +59,7 @@
                 <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Sign Up</h3>
             </div>
 
-        </div>
+
         </div>
 
         <div class="container body-container">
@@ -84,7 +84,7 @@
 
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">State</label>
-                        <select id="inputState" name="state" class="form-select">
+                        <select id="inputState" name="state" class="form-select state-value">
                             <option selected disabled>Choose...</option>
                             <option value="Maharashtra">Maharashtra</option>
                             <option value="Gujarat">Gujarat</option>
@@ -93,26 +93,18 @@
                             <option value="Punjab">Punjab</option>
                         </select>
                     </div>
+
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">City</label>
-                        <select id="inputState" name="city" class="form-select">
+                        <select id="inputCity" name="city" class="form-select city-value">
                             <option selected disabled>Choose...</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Gujarat">Gujarat</option>
-                            <option value="Rajasthan">Rajasthan</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Punjab">Punjab</option>
+
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Area</label>
-                        <select id="inputState" name="area" class="form-select">
+                        <select id="inputArea" name="area" class="form-select area-value disabled">
                             <option selected disabled>Choose...</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Gujarat">Gujarat</option>
-                            <option value="Rajasthan">Rajasthan</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Punjab">Punjab</option>
                         </select>
                     </div>
 
@@ -128,6 +120,7 @@
     </main>
 
     <script src="js/bootstrap.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

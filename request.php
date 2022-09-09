@@ -41,7 +41,6 @@
             <div class="row this-row justify-content-center">
         
                 <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Request blood</h3>
-                </div>
 
             </div>
         </div>
