@@ -12,6 +12,23 @@
 
 <body>
 
+    <?php
+        $con = new mysqli("localhost", "root", "", "blood_donation");
+        if ($con->connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            exit();
+        }
+
+        if($result = mysqli_query($con, "SELECT * FROM addresses")) {
+            $row = mysqli_fetch_all($result);
+            echo print_r($row);
+            echo "<br>";
+            echo print_r($row[3]);
+        }
+
+        mysqli_close($con);
+    ?>
+
     <nav class="navbar navbar-expand-lg bg-dark ">
         <div class="container-fluid">
             <div class="container">
@@ -47,7 +64,7 @@
 
         <div class="container body-container">
             <div class="row justify-content-center">
-                <form action="submit.php" method="post" class="row g-3">
+                <form action="submit.php" method="post" class="row g-3 m-4">
                     <div class="col-md-6">
                         <label for="inputEmail4" class="form-label">Name</label>
                         <input type="text" name="name" class="form-control" id="inputEmail4">
@@ -64,10 +81,7 @@
                         <label for="inputPassword4" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" id="inputPassword4">
                     </div>
-                    <div class="col-md-6">
-                        <label for="inputCity" class="form-label">City</label>
-                        <input type="text" name="city" class="form-control" id="inputCity">
-                    </div>
+
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">State</label>
                         <select id="inputState" name="state" class="form-select">
@@ -79,9 +93,30 @@
                             <option value="Punjab">Punjab</option>
                         </select>
                     </div>
-                    
-                    
-                    <div class="col-12">
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">City</label>
+                        <select id="inputState" name="city" class="form-select">
+                            <option selected disabled>Choose...</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Punjab">Punjab</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">Area</label>
+                        <select id="inputState" name="area" class="form-select">
+                            <option selected disabled>Choose...</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Punjab">Punjab</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 my-4 justify-content-center text-center">
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </div>
                 </form>

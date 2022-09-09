@@ -57,8 +57,8 @@
                         <label for="inputPassword4" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" id="inputPassword4">
                     </div>                    
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                    <div class="col-12 my-4 justify-content-center text-center">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
                     </div>
                 </form>
             </div>
@@ -67,5 +67,7 @@
     </main>
     
     <script src="js/bootstrap.min.js"></script>
+    <script>x = 10</script>
+    <script src="./script.js"></script>
 </body>
 </html>
