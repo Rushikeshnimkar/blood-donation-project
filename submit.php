@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <link href="css/style.css" rel="stylesheet"></link>
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
 
+</head>
 <body>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -73,15 +75,13 @@
                 echo "special char found";
                 return;
             }
-
         }
 
-        if(empty($_POST['password'])) {
+        if (empty($_POST['password'])) {
             $pwdErr = "Enter a password";
             echo $pwdErr;
             $post = false;
-            return;         
-            
+            return;
         } else {
             $password = $_POST['password'];
             $pwdErr = "Set a correct password";
@@ -94,17 +94,36 @@
         $state = $_POST['state'];
         $city = $_POST['city'];
         $area = $_POST['area'];
-        
+
         $address_query = "SELECT address_id FROM addresses WHERE state='$state' and city='$city' and area = '$area'";
 
         $result = mysqli_query($con, $address_query);
 
         $row = mysqli_fetch_all($result);
         $row = $row[0][0];
-        echo $row;  
 
+        $query = "INSERT INTO users values (NULL, '$name', '$email', $phone, '$user', '$password', $row);";
+        try {
+            $result = mysqli_query($con, $query);
 
-        $query = "INSERT INTO users values (NULL, $name, $email, $phone  ";
+            if ($result) {
+                echo "<h1 class='text-center'>Account created successfully</h1>";
+            }
+        } catch (\Throwable $th) {
+            if (mysqli_errno($con) == 1062) {
+                echo '
+                <div class="container body-container">
+                    <div class="row justify-content-center" >
+                        <h3 class="text-center">
+                            An account with this phone number or email alread exists
+                        </h3>
+                    </div>
+                </div>
+                ';
+            } else {
+                echo "not workign";
+            }
+        }
     } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
         return;
     } else {
