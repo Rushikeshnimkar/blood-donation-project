@@ -45,6 +45,21 @@
             }
         }
 
+        if (empty($_POST['phone'])) {
+            $phoneErr = "Phone number is required";
+            echo $phoneErr;
+            $post = false;
+            return;
+        } else {
+            $phone = $_POST['phone'];
+            $phone = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
+            if (!filter_var($phone, FILTER_SANITIZE_NUMBER_INT)) {
+                echo ("Provided phone number is not valid");
+                $post = false;
+                return;
+            }
+        }
+
         if (empty($_POST['username'])) {
             $userErr = "Username is required";
             echo $userErr;
@@ -56,11 +71,44 @@
             // $user = mysqli_real_escape_string($con, $user);
             if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $user)) {
                 echo "special char found";
-            } else {
-                echo $user;
+                return;
             }
 
         }
+
+        if(empty($_POST['password'])) {
+            $pwdErr = "Enter a password";
+            echo $pwdErr;
+            $post = false;
+            return;         
+            
+        } else {
+            $password = $_POST['password'];
+            $pwdErr = "Set a correct password";
+            if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password)) {
+                echo "special char not allowed in password";
+                return;
+            }
+        }
+
+        $state = $_POST['state'];
+        $city = $_POST['city'];
+        $area = $_POST['area'];
+        
+        $address_query = "SELECT address_id FROM addresses WHERE state='$state' and city='$city' and area = '$area'";
+
+        $result = mysqli_query($con, $address_query);
+
+        $row = mysqli_fetch_all($result);
+        $row = $row[0][0];
+        echo $row;  
+
+
+        $query = "INSERT INTO users values (NULL, $name, $email, $phone  ";
+    } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        return;
+    } else {
+        return;
     }
 
 

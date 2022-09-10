@@ -73,13 +73,17 @@
         <div class="container body-container">
             <div class="row justify-content-center">
                 <form action="submit.php" method="post" class="row g-3 m-4">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="inputName4" class="form-label">Name</label>
                         <input type="text" name="name" class="form-control" id="inputName4">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Email</label>
                         <input type="email" name="email" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputPhone4" class="form-label">Phone</label>
+                        <input type="tel" name="phone" class="form-control" id="inputPhone4" placeholder="12345-67890" pattern="[0-9]{5}-[0-9]{5}">
                     </div>
                     <div class="col-md-6">
                         <label for="inputUsername4" class="form-label">Username</label>
@@ -93,7 +97,7 @@
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">State</label>
                         <select id="inputState" name="state" class="form-select state-value">
-                            <option selected disabled>Choose...</option>
+                            <option value='NULL' selected disabled>Choose...</option>
                             <option value="Maharashtra">Maharashtra</option>
                             <option value="Gujarat">Gujarat</option>
                             <option value="Rajasthan">Rajasthan</option>
@@ -105,19 +109,19 @@
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">City</label>
                         <select id="inputCity" name="city" class="form-select city-value">
-                            <option selected disabled>Choose...</option>
+                            <option value='NULL' selected disabled>Choose...</option>
 
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Area</label>
                         <select id="inputArea" name="area" class="form-select area-value disabled">
-                            <option selected disabled>Choose...</option>
+                            <option value='NULL' selected disabled>Choose...</option>
                         </select>
                     </div>
 
                     <div class="col-12 my-4 justify-content-center text-center">
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <button type="submit" id="submitButton" class="btn btn-primary">Sign Up</button>
                     </div>
                 </form>
             </div>
@@ -128,15 +132,8 @@
     </main>
 
     <script src="js/bootstrap.min.js"></script>
-    <script>
-        let states = <?php echo json_encode($states); ?>;
-
-        let cities = <?php echo json_encode($cities); ?>;
-
-        let areas = <?php echo json_encode($areas); ?>;
-        
-    </script>
-    <script src="./obfuscate.js"></script>
+    <script>let states = <?php echo json_encode($states); ?>;let cities = <?php echo json_encode($cities); ?>;let areas = <?php echo json_encode($areas); ?>;</script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
