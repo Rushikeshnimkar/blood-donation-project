@@ -12,7 +12,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-dark ">
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark ">
         <div class="container-fluid">
             <div class="container">
                 <a class="navbar-brand text-bg-dark" href="index.php">Blood Donations</a>
@@ -22,11 +22,11 @@
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark active" aria-current="page" href="index.php">Home</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
                 </li>
-                
+
 
                 <?php
                 session_start();
@@ -60,17 +60,17 @@
     </nav>
 
     <main>
-        <div class="container body-container">
+        <div class="container-fluid body-container mt-5">
             <div class="row justify-content-center">
 
-                <h3 class="w-50 p-2 bg-primary bg-gradient rounded-5 m-4 text-center">Welcome to the Blood Donation Camp!</h3>
-                <h5 class="m-2 text-center fw-normal">Blood donation is a voluntary procedure that can help save lives. There are several types of blood donation. Each type helps meet different medical needs. The blood donation process from the time you arrive until the time you leave takes about an hour. The donation itself is only about 8-10 minutes on average.</h5>
+                <h4 class="w-50 welcome p-2 bg-primary bg-gradient rounded-5 m-4 text-center">Welcome to the Blood Donation Camp!</h4>
+                <h5 class="m-2 text-center fw-normal fs-4">Blood donation is a voluntary procedure that can help save lives. There are several types of blood donation. Each type helps meet different medical needs. The blood donation process from the time you arrive until the time you leave takes about an hour. The donation itself is only about 8-10 minutes on average.</h5>
 
             </div>
 
             <div class="row justify-content-center">
-                <h3 class="w-25 p-2 m-4 m-4 bg-primary bg-gradient rounded-5 text-center">Why it's done?</h3>
-                <p class="text-center fs-5">You agree to have blood drawn so that it can be given to someone who needs a blood transfusion.
+                <h4 class="w-25 p-2 m-4 m-4 bg-primary bg-gradient rounded-5 text-center">Why it's done?</h4>
+                <p class="text-center fs-4">You agree to have blood drawn so that it can be given to someone who needs a blood transfusion.
                     <br>
                     Millions of people need blood transfusions each year. Some may need blood during surgery. Others depend on it after an accident or because they have a disease that requires certain parts of blood. Blood donation makes all of this possible. There is no substitute for human blood — all transfusions use blood from a donor.
 
@@ -78,7 +78,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <h3 class="w-25 p-2 m-4 bg-primary bg-gradient rounded-5 text-center">How it's done?</h3>
+                <h4 class="w-25 p-2 m-4 bg-primary bg-gradient rounded-5 text-center">How it's done?</h4>
             </div>
 
             <div class="row justify-content-center">
@@ -88,19 +88,19 @@
                 </div>
                 <div class="col my-3">
                     <ul>
-                        <li>
+                        <li class="fs-5">
                             If you’re donating whole blood, we’ll cleanse an area on your arm and insert a brand new sterile needle for the blood draw. (This feels like a quick pinch and is over in seconds.)
                         </li>
-                        <li>
+                        <li class="fs-5">
                             Other types of donations, such as platelets, are made using an apheresis machine which will be connected to both arms.
                         </li>
-                        <li>
+                        <li class="fs-5">
                             A whole blood donation takes about 8-10 minutes, during which you’ll be seated comfortably or lying down.
                         </li>
-                        <li>
+                        <li class="fs-5">
                             When approximately a pint of whole blood has been collected, the donation is complete and a staff person will place a bandage on your arm.
                         </li>
-                        <li>
+                        <li class="fs-5">
                             For platelets, the apheresis machine will collect a small amount of blood, remove the platelets, and return the rest of the blood through your other arm; this cycle will be repeated several times over about 2 hours.
                         </li>
                     </ul>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <h3 class="w-50 p-2 m-4 bg-primary bg-gradient rounded-5 text-center">Refreshment and Recovery</h3>
+                <h4 class="w-25 p-2 m-4 bg-primary bg-gradient rounded-5 text-center">Refreshment and Recovery</h4>
             </div>
 
             <div class="row justify-content-center">
@@ -118,19 +118,19 @@
                 </div>
                 <div class="col my-3">
                     <ul>
-                        <li>
+                        <li class="fs-5">
                             After donating blood, you’ll have a snack and something to drink in the refreshment area.
                         </li>
                         <br>
-                        <li>
+                        <li class="fs-5">
                             You’ll leave after 10-15 minutes and continue your normal routine.
                         </li>
                         <br>
-                        <li>
+                        <li class="fs-5">
                             Enjoy the feeling of accomplishment knowing you are helping to save lives.
                         </li>
                         <br>
-                        <li>
+                        <li class="fs-5">
                             Take a selfie, or simply share your good deed with friends. It may inspire them to become blood donors.
                         </li>
 
@@ -139,12 +139,21 @@
             </div>
 
             <div class="row justify-content-center">
-
-                <h3 class="w-25 p-2 m-4 bg-danger bg-gradient rounded-5 text-center">
-                    <a style="color:black; text-decoration: none;" href="./donate.php">Donate Here!</a>
-                </h3>
-
+                <h4 class="w-25 p-2 m-4 bg-primary bg-gradient rounded-5 text-center">How to Donate?</h4>
+                <p class="text-center fs-4">You can go to a Blood Donation Camp near you or find one online and volunteer in it or donate your blood. 
+                    You can also register to our website to donate blood. 
+                    After registration, you'll be informed through call or text, when blood donation will be required in your area. <br>
+                    To register with us, click the "Register Now!" button below and join the good cause of donating blood.
+                </p>
             </div>
+
+            <div class="row justify-content-center">
+                <h4 class="w-25 register p-2 m-4 bg-danger bg-gradient rounded-5 text-center">
+                    <a style="color:black; text-decoration: none;" href="./signup.php">Register Now!</a>
+                </h4>
+            </div>
+
+
         </div>
     </main>
     <script src="js/bootstrap.min.js"></script>

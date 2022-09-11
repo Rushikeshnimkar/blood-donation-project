@@ -18,42 +18,63 @@ $_SESSION['id'] = "test";
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-dark ">
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark ">
         <div class="container-fluid">
             <div class="container">
                 <a class="navbar-brand text-bg-dark" href="index.php">Blood Donations</a>
             </div>
 
-            <ul class="nav justify-content-end d-flex flex-nowrap">
+            <ul class="nav justify-content-right d-flex flex-nowrap">
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark active" aria-current="page" href="index.php">Home</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
-                </li>
+
+                <?php
+                
+                if (isset($_SESSION['logged'])) {
+                    if ($_SESSION['logged'] == true) {
+                        echo '
+                                <li class="nav-item">
+                                    <a class="nav-link text-bg-dark" aria-current="page" href="logout.php">Log Out</a>
+                                </li>
+                            ';
+                    } else {
+                        echo '<li class="nav-item">
+                        <a class="nav-link text-bg-dark" aria-current="page" href="signin.php">SignIn</a>
+                    </li>
+                    
+                        <a class="nav-link text-bg-dark" aria-current="page" href="signup.php">Sign Up</a>
+                    ';
+                    }
+                } else {
+                    echo '<li class="nav-item">
+                        <a class="nav-link text-bg-dark" aria-current="page" href="signin.php">SignIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-bg-dark" aria-current="page" href="signup.php">SignUp</a>
+                    </li>';
+                }
+                ?>
 
             </ul>
         </div>
     </nav>
 
-    <main>
-        <div class="container body-container">
+    <main class="container-fluid no-scroll mt-5 body-container" style="height: 35rem;">
+        <div class="container-fluid">
             <div class="row this-row justify-content-center">
 
                 <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Sign In</h3>
             </div>
 
         </div>
-        </div>
 
-        <div class="container body-container">
+        <div class="container-fluid">
             <div class="row justify-content-center">
                 <form action="submit.php" method="get" class="row g-3">
                     <div class="col-md-6">
@@ -74,8 +95,7 @@ $_SESSION['id'] = "test";
     </main>
 
     <script src="js/bootstrap.min.js"></script>
-    <script></script>
-    <script src="./script.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

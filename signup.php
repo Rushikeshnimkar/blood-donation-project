@@ -137,7 +137,7 @@
         let cities = <?php echo json_encode($cities); ?>;
         let areas = <?php echo json_encode($areas); ?>;
     </script>
-    <script src="./script.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
