@@ -17,10 +17,13 @@
         }
 
         if ($success = true) {
-            setcookie("user", hash("sha256", "user"));
+            setcookie("user", hash("sha256", "user logged in"));
         }
 
-        echo "<br>";
+        $_SESSION['logged'] = true;
+        $_SESSION['email'] = $_GET['email'];
+        $_SESSION['password'] = $_GET['password'];
+        header('Location: /blood-donation-project/index.php');
     } else {
         return;
     }
@@ -41,6 +44,8 @@
 </head>
 
 <body>
+
+
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] == "POST") {

@@ -18,19 +18,42 @@
                 <a class="navbar-brand text-bg-dark" href="index.php">Blood Donations</a>
             </div>
 
-            <ul class="nav justify-content-end d-flex flex-nowrap">
+            <ul class="nav justify-content-right d-flex flex-nowrap">
+                <li class="nav-item">
+                    <a class="nav-link text-bg-dark active" aria-current="page" href="index.php">Home</a>
+                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="request.php">Request</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
-                </li>
+                
+
+                <?php
+                session_start();
+                if (isset($_SESSION['logged'])) {
+                    if ($_SESSION['logged'] == true) {
+                        echo '
+                                <li class="nav-item">
+                                    <a class="nav-link text-bg-dark" href="logout.php">Log Out</a>
+                                </li>
+                            ';
+                    } else {
+                        echo '<li class="nav-item">
+                        <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
+                    </li>';
+                    }
+                } else {
+                    echo '<li class="nav-item">
+                        <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
+                    </li>';
+                }
+                ?>
 
             </ul>
         </div>
@@ -91,7 +114,7 @@
             <div class="row justify-content-center">
 
                 <div class="col my-3 mx-nt">
-                    <img src="images/2.jpeg" style="margin-left: 50px"  alt="thankyou.jpg" height="280">
+                    <img src="images/2.jpeg" style="margin-left: 50px" alt="thankyou.jpg" height="280">
                 </div>
                 <div class="col my-3">
                     <ul>

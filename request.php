@@ -22,9 +22,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="request.php">Request</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
                 </li>

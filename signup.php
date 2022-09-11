@@ -13,26 +13,25 @@
 <body>
 
     <?php
-        $con = new mysqli("localhost", "root", "", "blood_donation");
-        if ($con->connect_errno) {
-            echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-            exit();
-        }
+    $con = new mysqli("localhost", "root", "", "blood_donation");
+    if ($con->connect_errno) {
+        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+        exit();
+    }
 
-        if ($result = mysqli_query($con, "SELECT * FROM addresses")) {
-            $rows = mysqli_fetch_all($result);
-            $states = array();
-            $cities = array();
-            $areas = array();
-            foreach ($rows as $row) {
-                array_push($states, $row[3]);
-                array_push($cities, $row[2]);
-                array_push($areas, $row[1]);
-            }
-            
+    if ($result = mysqli_query($con, "SELECT * FROM addresses")) {
+        $rows = mysqli_fetch_all($result);
+        $states = array();
+        $cities = array();
+        $areas = array();
+        foreach ($rows as $row) {
+            array_push($states, $row[3]);
+            array_push($cities, $row[2]);
+            array_push($areas, $row[1]);
         }
+    }
 
-        mysqli_close($con);
+    mysqli_close($con);
     ?>
 
 
@@ -45,11 +44,12 @@
 
             <ul class="nav justify-content-end d-flex flex-nowrap">
                 <li class="nav-item">
-                    <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
+                    <a class="nav-link text-bg-dark active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="request.php">Request</a>
+                    <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
                 </li>
@@ -132,7 +132,11 @@
     </main>
 
     <script src="js/bootstrap.min.js"></script>
-    <script>let states = <?php echo json_encode($states); ?>;let cities = <?php echo json_encode($cities); ?>;let areas = <?php echo json_encode($areas); ?>;</script>
+    <script>
+        let states = <?php echo json_encode($states); ?>;
+        let cities = <?php echo json_encode($cities); ?>;
+        let areas = <?php echo json_encode($areas); ?>;
+    </script>
     <script src="./script.js"></script>
 </body>
 

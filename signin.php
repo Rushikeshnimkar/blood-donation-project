@@ -26,11 +26,12 @@ $_SESSION['id'] = "test";
 
             <ul class="nav justify-content-end d-flex flex-nowrap">
                 <li class="nav-item">
-                    <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
+                    <a class="nav-link text-bg-dark active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-bg-dark" href="request.php">Request</a>
+                    <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
                 </li>
