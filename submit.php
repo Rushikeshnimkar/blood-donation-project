@@ -1,16 +1,47 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        $con = new mysqli("localhost", "root", "", "blood_donation");
+        $email = $_GET['email'];
+        $password = $_GET['password'];
+        $queryString = "SELECT password from users where email='$email';";
+        $result = mysqli_query($con, $queryString);
+        $row = mysqli_fetch_row($result);
+
+        $success = false;
+
+        if ($password == $row[0]) {
+            $success = true;
+            echo $password;
+        }
+
+        if ($success = true) {
+            setcookie("user", hash("sha256", "user"));
+        }
+
+        echo "<br>";
+    } else {
+        return;
+    }
+?>
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="css/style.css" rel="stylesheet"></link>
-    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="css/style.css" rel="stylesheet">
+    </link>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    </link>
 
 </head>
+
 <body>
+
     <?php
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $con = new mysqli("localhost", "root", "", "blood_donation");
@@ -124,10 +155,6 @@
                 echo "not workign";
             }
         }
-    } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        return;
-    } else {
-        return;
     }
 
 
