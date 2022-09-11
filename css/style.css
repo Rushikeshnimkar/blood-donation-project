@@ -2,6 +2,6 @@
     background-color: rgb(225, 225, 225);
 }
 
-li {
-    width: 100%;
+.nav-link {
+    width: max-content !important;
 }

@@ -41,9 +41,9 @@
                         echo '<li class="nav-item">
                         <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
-                    </li>';
+                    
+                        <a class="nav-link text-bg-dark" href="signup.php">Sign Up</a>
+                    ';
                     }
                 } else {
                     echo '<li class="nav-item">
