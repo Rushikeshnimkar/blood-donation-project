@@ -24,8 +24,6 @@
         $_SESSION['email'] = $_GET['email'];
         $_SESSION['password'] = $_GET['password'];
         header('Location: /blood-donation-project/index.php');
-    } else {
-        return;
     }
 ?>
 <html lang="en">

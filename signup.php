@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="inputPhone4" class="form-label">Phone</label>
-                        <input type="tel" name="phone" class="form-control" id="inputPhone4" placeholder="12345-67890" pattern="[0-9]{5}-[0-9]{5}">
+                        <input type="tel" name="phone" class="form-control" id="inputPhone4" placeholder="1234567890" pattern="[0-9]{10}">
                     </div>
                     <div class="col-md-6">
                         <label for="inputUsername4" class="form-label">Username</label>
