@@ -66,14 +66,71 @@
                 <h3 class="w-25 p-2 bg-danger bg-gradient rounded-5 m-4 text-center">Donate Blood</h3>
             </div>
 
-        </div>
+            <!-- <div class="card text-center">
+                <div class="card-header">
+                    Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                <div class="card-footer text-muted">
+                    2 days ago
+                </div>
+            </div> -->
+
+
+
+            <?php
+            if ($_SESSION['logged'] == true) {
+                $sql = "SELECT * FROM `bootcamps`;";
+                $con = new mysqli("localhost", "root", "", "blood_donation");
+                if ($con->connect_errno) {
+                    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+                    exit();
+                    header('Location: /blood-donation-project/index.php');
+                }
+
+                if ($result = mysqli_query($con, $sql)) {
+                    $rows = mysqli_fetch_all($result);
+
+                    foreach ($rows as $row) {
+                        $add_id = $row[2];
+                        $camp_name = $row[1];
+                        $camp_id = $row[0];
+
+                        $address = "SELECT area, city, state from addresses where id = $camp_id;";
+
+                        $result = mysqli_query($con, $address);
+                        $result = mysqli_fetch_row($result);
+
+                        $location = "Address: $result[0], $result[1], $result[2]";
+
+
+                        echo '<div class="card text-center m-5 ">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">', $camp_name, '</h5>
+                                    <p class="card-text">', $location, '</p>
+                                    <a href="#" class="btn btn-primary">Book your apointment</a>
+                                </div>
+
+                            </div>';
+                    }
+                }
+
+                mysqli_close($con);
+            }
+            ?>
+
+
+
+
         </div>
 
-        <div class="container body-container">
-            <div class="row justify-content-center">
 
-            </div>
-        </div>
+
 
     </main>
 

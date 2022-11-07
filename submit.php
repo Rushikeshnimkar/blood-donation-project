@@ -129,7 +129,7 @@
         $city = $_POST['city'];
         $area = $_POST['area'];
 
-        $address_query = "SELECT address_id FROM addresses WHERE state='$state' and city='$city' and area = '$area'";
+        $address_query = "SELECT id FROM addresses WHERE state='$state' and city='$city' and area = '$area'";
 
         $result = mysqli_query($con, $address_query);
 
@@ -142,6 +142,7 @@
 
             if ($result) {
                 echo "<h1 class='text-center'>Account created successfully</h1>";
+                header("Location: /blood-donation-project/index.php");
             }
         } catch (\Throwable $th) {
             if (mysqli_errno($con) == 1062) {

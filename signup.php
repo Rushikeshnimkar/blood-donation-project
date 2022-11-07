@@ -101,8 +101,6 @@
                             <option value="Maharashtra">Maharashtra</option>
                             <option value="Gujarat">Gujarat</option>
                             <option value="Rajasthan">Rajasthan</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Punjab">Punjab</option>
                         </select>
                     </div>
 
