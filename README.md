@@ -12,4 +12,27 @@
 
 - Donations centers across the globe need a way to encourage blood donations based on local demand during a time of crisis. As the demand for blood increases during the crisis, the eligible donor population was told to stay home, isolate, and avoid medical facilities causing a deepened shortage.
 
+## Environment Variables
 
+Session variables
+
+To Start session = session_start()
+
+Saving logged sessions status  = `$_SESSION['logged']`
+
+Saving logged sessions email = `$_SESSION['email']`
+
+Saving Logged Session Password = `$_SESSION['password']`
+
+Redirect URL
+
+PHP Code = `header("Location: /blood-donation-project/[url]")`
+
+
+
+
+## Features
+
+- Sign UP
+- Sign In
+- Apply for donations near you
