@@ -31,6 +31,7 @@
                 <?php
                 session_start();
                 if (isset($_SESSION['logged'])) {
+
                     if ($_SESSION['logged'] == true) {
                         echo '
                                 <li class="nav-item">
@@ -83,44 +84,74 @@
 
 
             <?php
-            if ($_SESSION['logged'] == true) {
-                $sql = "SELECT * FROM `bootcamps`;";
-                $con = new mysqli("localhost", "root", "", "blood_donation");
-                if ($con->connect_errno) {
-                    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-                    exit();
-                    header('Location: /blood-donation-project/index.php');
-                }
 
-                if ($result = mysqli_query($con, $sql)) {
-                    $rows = mysqli_fetch_all($result);
+            if (isset($_SESSION['logged'])) {
+                if ($_SESSION['logged'] == true) {
+                    $sql = "SELECT * FROM `bootcamps`;";
+                    $con = new mysqli("localhost", "root", "", "blood_donation");
+                    if ($con->connect_errno) {
+                        echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+                        exit();
+                        header('Location: /blood-donation-project/index.php');
+                    }
 
-                    foreach ($rows as $row) {
-                        $add_id = $row[2];
-                        $camp_name = $row[1];
-                        $camp_id = $row[0];
+                    if ($result = mysqli_query($con, $sql)) {
+                        $rows = mysqli_fetch_all($result);
 
-                        $address = "SELECT area, city, state from addresses where id = $camp_id;";
+                        foreach ($rows as $row) {
+                            $add_id = $row[2];
+                            $camp_name = $row[1];
+                            $camp_id = $row[0];
 
-                        $result = mysqli_query($con, $address);
-                        $result = mysqli_fetch_row($result);
+                            $address = "SELECT area, city, state from addresses where id = $camp_id;";
 
-                        $location = "Address: $result[0], $result[1], $result[2]";
+                            $result = mysqli_query($con, $address);
+                            $result = mysqli_fetch_row($result);
+
+                            $location = "Address: $result[0], $result[1], $result[2]";
+                            $donor_id = $_SESSION['user_id'];
+
+                            $sql = "SELECT donor_id from `donations` where donor_id=$donor_id and bootcamp_id=$camp_id";
+                            $result = mysqli_query($con, $sql);
+                            $result = mysqli_fetch_row($result);
 
 
-                        echo '<div class="card text-center m-5 ">
+
+                            if ($result != "") {
+                                echo '<div class="card text-center m-5 ">
 
                                 <div class="card-body">
                                     <h5 class="card-title">', $camp_name, '</h5>
                                     <p class="card-text">', $location, '</p>
-                                    <a href="#" class="btn btn-primary">Book your apointment</a>
+                                    <form>
+                                        <button type="submit" class="btn btn-secondary" disabled>Book your apointment</a>
+                                    </form>
                                 </div>
 
                             </div>';
-                    }
-                }
+                            } else {
+                                echo '<div class="card text-center m-5 ">
 
-                mysqli_close($con);
+                                <div class="card-body">
+                                    <h5 class="card-title">', $camp_name, '</h5>
+                                    <p class="card-text">', $location, '</p>
+                                    <form action="appointment.php" method="post">
+                                        <input value="', $camp_id, '" name="camp_id" hidden>
+
+                                        <button class="btn btn-primary" >Book your apointment</a>
+                                    </form>
+                                </div>
+
+                            </div>';
+                            }
+                        }
+                    }
+                    mysqli_close($con);
+                }
+            } else {
+                echo "<div class='d-flex justify-content-center'>
+                        <h1 class='center'>Please sign up</h1>
+                    </div>";
             }
             ?>
 

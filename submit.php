@@ -12,18 +12,21 @@
         $success = false;
 
         if ($password == $row[0]) {
-            $success = true;
-            echo $password;
-        }
-
-        if ($success = true) {
             setcookie("user", hash("sha256", "user logged in"));
+            $_SESSION['logged'] = true;
+            $_SESSION['email'] = $_GET['email'];
+            $_SESSION['password'] = $_GET['password'];
+            
+            $user_query = "SELECT id FROM `users` where email='$email' and password='$password'";
+            $result = mysqli_query($con, $user_query);
+            $row = mysqli_fetch_row($result);
+            $user_id = $row[0];
+            $_SESSION['user_id'] = $user_id;
+            header('Location: /blood-donation-project/index.php');
+        } else {
+            header('Location: /blood-donation-project/index.php');
         }
-
-        $_SESSION['logged'] = true;
-        $_SESSION['email'] = $_GET['email'];
-        $_SESSION['password'] = $_GET['password'];
-        header('Location: /blood-donation-project/index.php');
+      
     }
 ?>
 <html lang="en">
