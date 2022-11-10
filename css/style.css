@@ -1,12 +1,15 @@
-
 body {
     height: 100% !important;
     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4);
     background-size: cover;
     background-repeat: no-repeat;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
 }
 
-.body-container {
+body::-webkit-scrollbar {
+    display: none !important;
 }
 
 .bg-gradient {

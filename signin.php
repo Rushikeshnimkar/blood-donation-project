@@ -14,6 +14,7 @@ $_SESSION['id'] = "test";
     <title>Blood Donation Project</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -35,7 +36,7 @@ $_SESSION['id'] = "test";
 
 
                 <?php
-                
+
                 if (isset($_SESSION['logged'])) {
                     if ($_SESSION['logged'] == true) {
                         echo '
@@ -95,7 +96,14 @@ $_SESSION['id'] = "test";
     </main>
 
     <script src="js/bootstrap.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+    </script>
+
+    <script>
+        
+    </script>
 </body>
 
 </html>

@@ -122,6 +122,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo '<script>alert("', $pwdErr, '");  history.back();</script>';
             $post = false;
             return;
+        } elseif (strlen($_POST['password']) < 8) {
+            $pwdErr = "Length of password should be larger than 8 digits";
+            echo '<script>alert("', $pwdErr, '");  history.back();</script>';
+            return;
         } else {
             $password = $_POST['password'];
             $pwdErr = "special char not allowed in password";
@@ -147,49 +151,27 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $result = mysqli_query($con, $query);
 
             if ($result) {
-                echo '<nav class="navbar navbar-expand-lg bg-dark ">
-                <div class="container-fluid">
-                    <div class="container">
-                        <a class="navbar-brand text-bg-dark" href="index.php">Blood Donations</a>
-                    </div>
-        
-                    <ul class="nav justify-content-end d-flex flex-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link text-bg-dark active" aria-current="page" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
-                        </li>
-        
-                        <li class="nav-item">
-                            <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
-                        </li>
-        
-                    </ul>
-                </div>
-            </nav>';
+                echo '
+                <script>
+                    alert("User successfully registered!");
+                    setTimeout(() => {
+                        window.location.href = "http://localhost/blood-donation-project/signin.php"; 
+                    }, 0);
+                </script>';
             }
         } catch (\Throwable $th) {
             if (mysqli_errno($con) == 1062) {
                 echo '
-                <div class="container body-container">
-                    <div class="row justify-content-center" >
-                        <h3 class="text-center">
-                            An account with this phone number or email alread exists
-                        </h3>
-                    </div>
-                </div>
+                <script>
+                    alert("An account with this email or phone number already exists");
+                    history.back();
+                </script>
                 ';
             } else {
                 echo "not workign";
             }
         }
     }
-
-
 
     ?>
 </body>
