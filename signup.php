@@ -72,14 +72,14 @@
 
         <div class="container body-container">
             <div class="row justify-content-center">
-                <form action="submit.php" method="post" class="row g-3 m-4">
+                <form action="submit.php" method="post" name="signupForm" class="row g-3 m-4">
                     <div class="col-md-4">
-                        <label for="inputName4" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="inputName4">
+                        <label for="inputName4" class="form-label name-input">Name</label>
+                        <input type="text" name="name" placeholder="Name" class="form-control form-name" id="inputName4">
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="inputEmail4">
+                        <input type="email" name="email" placeholder="Email" class="form-control" id="inputEmail4">
                     </div>
                     <div class="col-md-4">
                         <label for="inputPhone4" class="form-label">Phone</label>
@@ -87,11 +87,11 @@
                     </div>
                     <div class="col-md-6">
                         <label for="inputUsername4" class="form-label">Username</label>
-                        <input type="username" name="username" class="form-control" id="inputUsername4">
+                        <input type="username" placeholder="Username" name="username" class="form-control" id="inputUsername4">
                     </div>
                     <div class="col-md-6">
                         <label for="inputPassword4" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="inputPassword4">
+                        <input type="password" placeholder="Password" name="password" class="form-control" id="inputPassword4">
                     </div>
 
                     <div class="col-md-4">
@@ -135,7 +135,7 @@
         let cities = <?php echo json_encode($cities); ?>;
         let areas = <?php echo json_encode($areas); ?>;
     </script>
-    <script src="./index.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

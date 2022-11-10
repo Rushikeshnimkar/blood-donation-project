@@ -147,10 +147,14 @@
                         }
                     }
                     mysqli_close($con);
+                } else {
+                    echo "<div class='d-flex justify-content-center'>
+                            <h1 class='center'>Please Create an Account and Sign In!</h1>
+                        </div>";
                 }
             } else {
                 echo "<div class='d-flex justify-content-center'>
-                        <h1 class='center'>Please sign up</h1>
+                        <h1 class='center'>Please Create an Account and Sign In!</h1>
                     </div>";
             }
             ?>

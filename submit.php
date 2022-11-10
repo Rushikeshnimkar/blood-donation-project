@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <?php
-    session_start();
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        $con = new mysqli("localhost", "root", "", "blood_donation");
-        $email = $_GET['email'];
-        $password = $_GET['password'];
-        $queryString = "SELECT password from users where email='$email';";
-        $result = mysqli_query($con, $queryString);
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $con = new mysqli("localhost", "root", "", "blood_donation");
+    $email = $_GET['email'];
+    $password = $_GET['password'];
+    $queryString = "SELECT password from users where email='$email';";
+    $result = mysqli_query($con, $queryString);
+    $row = mysqli_fetch_row($result);
+
+    $success = false;
+
+    if ($password == $row[0]) {
+        setcookie("user", hash("sha256", "user logged in"));
+        $_SESSION['logged'] = true;
+        $_SESSION['email'] = $_GET['email'];
+        $_SESSION['password'] = $_GET['password'];
+
+        $user_query = "SELECT id FROM `users` where email='$email' and password='$password'";
+        $result = mysqli_query($con, $user_query);
         $row = mysqli_fetch_row($result);
-
-        $success = false;
-
-        if ($password == $row[0]) {
-            setcookie("user", hash("sha256", "user logged in"));
-            $_SESSION['logged'] = true;
-            $_SESSION['email'] = $_GET['email'];
-            $_SESSION['password'] = $_GET['password'];
-            
-            $user_query = "SELECT id FROM `users` where email='$email' and password='$password'";
-            $result = mysqli_query($con, $user_query);
-            $row = mysqli_fetch_row($result);
-            $user_id = $row[0];
-            $_SESSION['user_id'] = $user_id;
-            header('Location: /blood-donation-project/index.php');
-        } else {
-            header('Location: /blood-donation-project/index.php');
-        }
-      
+        $user_id = $row[0];
+        $_SESSION['user_id'] = $user_id;
+        header('Location: /blood-donation-project/signup.php');
+    } else {
+        header('Location: /blood-donation-project/signup.php');
     }
+}
 ?>
 <html lang="en">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +53,8 @@
         $post = true;
         if (empty($_POST['name'])) {
             $nameErr = "Name is required";
-            echo $nameErr;
+            echo '<script>alert("', $nameErr, '");  history.back();</script>';
+
             $post = false;
             return;
         } else {
@@ -62,8 +62,7 @@
             // check if name only contains letters and whitespace
             if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
                 $nameErr = "Only letters and white space allowed";
-                echo $nameErr;
-                $post = false;
+                echo '<script>alert("', $nameErr, '");  history.back();</script>';
                 return;
             }
         }
@@ -78,7 +77,7 @@
             $email = $_POST['email'];
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo ("$email is not a valid email address");
+                echo '<script>alert("Enter a valid email address"); history.back();</script>';
                 $post = false;
                 return;
             }
@@ -86,14 +85,16 @@
 
         if (empty($_POST['phone'])) {
             $phoneErr = "Phone number is required";
-            echo $phoneErr;
+            echo '<script>alert("', $nameErr, '");  history.back();</script>';
             $post = false;
             return;
         } else {
             $phone = $_POST['phone'];
             $phone = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
             if (!filter_var($phone, FILTER_SANITIZE_NUMBER_INT)) {
-                echo ("Provided phone number is not valid");
+                $phoneErr = "Phone number is not valid";
+                echo '<script>alert("', $nameErr, '");  history.back();</script>';
+
                 $post = false;
                 return;
             }
@@ -101,7 +102,8 @@
 
         if (empty($_POST['username'])) {
             $userErr = "Username is required";
-            echo $userErr;
+            echo '<script>alert("', $userErr, '");  history.back();</script>';
+
             $post = false;
             return;
         } else {
@@ -109,21 +111,22 @@
             // $user= filter_input(INPUT_POST,'user',FILTER_SANITIZE_SPECIAL_CHARS);
             // $user = mysqli_real_escape_string($con, $user);
             if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $user)) {
-                echo "special char found";
+                $userErr = "Special Characters not allowed! Only letters and numbers allowed!";
+                echo '<script>alert("', $userErr, '");  history.back();</script>';
                 return;
             }
         }
 
         if (empty($_POST['password'])) {
             $pwdErr = "Enter a password";
-            echo $pwdErr;
+            echo '<script>alert("', $pwdErr, '");  history.back();</script>';
             $post = false;
             return;
         } else {
             $password = $_POST['password'];
-            $pwdErr = "Set a correct password";
+            $pwdErr = "special char not allowed in password";
             if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password)) {
-                echo "special char not allowed in password";
+                echo '<script>alert("', $pwdErr, '");  history.back();</script>';
                 return;
             }
         }
@@ -144,8 +147,30 @@
             $result = mysqli_query($con, $query);
 
             if ($result) {
-                echo "<h1 class='text-center'>Account created successfully</h1>";
-                header("Location: /blood-donation-project/index.php");
+                echo '<nav class="navbar navbar-expand-lg bg-dark ">
+                <div class="container-fluid">
+                    <div class="container">
+                        <a class="navbar-brand text-bg-dark" href="index.php">Blood Donations</a>
+                    </div>
+        
+                    <ul class="nav justify-content-end d-flex flex-nowrap">
+                        <li class="nav-item">
+                            <a class="nav-link text-bg-dark active" aria-current="page" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-bg-dark active" aria-current="page" href="donate.php">Donate</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link text-bg-dark" href="signin.php">SignIn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-bg-dark" href="signup.php">SignUp</a>
+                        </li>
+        
+                    </ul>
+                </div>
+            </nav>';
             }
         } catch (\Throwable $th) {
             if (mysqli_errno($con) == 1062) {

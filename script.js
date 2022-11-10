@@ -1,6 +1,6 @@
 let data = [];
 
-for(let i = 0; i < states.length; i++) {
+for (let i = 0; i < states.length; i++) {
     data.push({
         "state": states[i],
         "city": cities[i],
@@ -18,31 +18,31 @@ const emailInput = document.getElementById("inputEmail4");
 const userInput = document.getElementById("inputUsername4");
 const pwdInput = document.getElementById("inputPassword4");
 
-submitButton.disabled  = true;
+submitButton.disabled = true;
 
 if (stateInput) {
     stateInput.addEventListener("change", (event) => {
         displayCities(event.target.value);
-        if(areaInput.value == 'NULL') {
+        if (areaInput.value == 'NULL') {
             submitButton.disabled = true;
         }
     })
 
 }
 
-if(cityInput) {
+if (cityInput) {
     cityInput.addEventListener("change", (event) => {
         displayAreas(event.target.value);
-        if(areaInput.value == 'NULL') {
+        if (areaInput.value == 'NULL') {
             submitButton.disabled = true;
         }
     })
-    
+
 }
 
-if(areaInput) {
+if (areaInput) {
     areaInput.addEventListener("change", (event) => {
-        if(areaInput.value == 'NULL') {
+        if (areaInput.value == 'NULL') {
             submitButton.disabled = true;
         }
     })
@@ -60,7 +60,7 @@ const displayCities = (state) => {
     cities = [...new Set(cities)];
 
     cityInput.innerHTML = "<option value='NULL' selected disabled>Choose...</option>";
-    
+
     cities.forEach(element => {
 
         let node = document.createElement("option");
@@ -73,7 +73,7 @@ const displayCities = (state) => {
 
 }
 
-const displayAreas= (city) => {
+const displayAreas = (city) => {
     let areas = [];
     data.forEach(element => {
         if (element.city === city) {
@@ -94,10 +94,13 @@ const displayAreas= (city) => {
     })
 }
 
-if(areaInput) {
+if (areaInput) {
     areaInput.addEventListener("change", (event) => {
         submitButton.disabled = false;
     })
 }
+
+
+
 
 
