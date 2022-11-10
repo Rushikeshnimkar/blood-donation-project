@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $success = false;
 
     if ($password == $row[0]) {
-        setcookie("user", hash("sha256", "user logged in"));
         $_SESSION['logged'] = true;
         $_SESSION['email'] = $_GET['email'];
         $_SESSION['password'] = $_GET['password'];
@@ -22,9 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $row = mysqli_fetch_row($result);
         $user_id = $row[0];
         $_SESSION['user_id'] = $user_id;
-        header('Location: /blood-donation-project/signup.php');
+        header('Location: /blood-donation-project/donate.php');
     } else {
-        header('Location: /blood-donation-project/signup.php');
+        $pwdErr = "The password entered is incorrect!";
+        echo '<script>alert("', $pwdErr, '");  history.back();</script>';
+        return;
     }
 }
 ?>

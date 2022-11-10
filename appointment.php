@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +23,13 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $con = new mysqli("localhost", "root", "", "blood_donation");
         $post = true;
-    
+
 
         $user_id = $_SESSION['user_id'];
+        $camp_name = $_SESSION['camp_name'];
         $camp_id = $_POST['camp_id'];
+        $camp_date = $_SESSION['camp_date'];
+        $camp_address = $_SESSION['camp_address'];
 
         $sql = "INSERT INTO `donations` VALUES (NULL, $user_id, $camp_id);";
 
@@ -35,7 +38,7 @@
 
         try {
             if ($result) {
-                header("Location: /blood-donation-project/donate.php");
+               header("Location: /blood-donation-project/donate.php");
             }
         } catch (\Throwable $th) {
             if (mysqli_errno($con) == 1062) {

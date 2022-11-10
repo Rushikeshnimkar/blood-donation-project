@@ -99,17 +99,20 @@
                         $rows = mysqli_fetch_all($result);
 
                         foreach ($rows as $row) {
+                            $camp_date = $row[3];
                             $add_id = $row[2];
                             $camp_name = $row[1];
                             $camp_id = $row[0];
-
+                            $_SESSION['camp_name'] = $camp_name;
+                            $_SESSION['camp_date'] = $camp_date;
+                            $donor_id = $_SESSION['user_id'];
                             $address = "SELECT area, city, state from addresses where id = $camp_id;";
 
                             $result = mysqli_query($con, $address);
                             $result = mysqli_fetch_row($result);
 
                             $location = "Address: $result[0], $result[1], $result[2]";
-                            $donor_id = $_SESSION['user_id'];
+                            $_SESSION['camp_address'] = $location;
 
                             $sql = "SELECT donor_id from `donations` where donor_id=$donor_id and bootcamp_id=$camp_id";
                             $result = mysqli_query($con, $sql);
@@ -118,23 +121,47 @@
 
 
                             if ($result != "") {
-                                echo '<div class="card text-center m-5 ">
+                                $date = "SELECT camp_date from bootcamps where id = $camp_id";
+                                $prevDate = mysqli_query($con, $date);
+                                $prevDate = mysqli_fetch_array($prevDate);
+                                $prevDate = $prevDate[0];
 
-                                <div class="card-body">
-                                    <h5 class="card-title">', $camp_name, '</h5>
-                                    <p class="card-text">', $location, '</p>
-                                    <form>
-                                        <button type="submit" class="btn btn-success" disabled>Appointment Booked</a>
-                                    </form>
-                                </div>
+                                $date = 'SELECT DATE_ADD("' . $prevDate . '", INTERVAL 15 DAY);';
+                                $newDate = mysqli_fetch_array(mysqli_query($con, $date))[0];
 
-                            </div>';
+                                $currDate = mysqli_fetch_array(mysqli_query($con, "SELECT CURDATE()"))[0];
+
+                                if($currDate < $newDate) {
+                                    echo '
+                                    <div class="card text-center m-5 ">
+    
+                                        <div class="card-body">
+                                            <h5 class="card-title">', $camp_name, '</h5>
+                                            <p class="card-text">', $location, '</p>
+                                            <p class="card-text">', $camp_date, '</p>
+                                            <form>
+                                                <button type="submit" class="btn btn-success" disabled>Appointment Booked</a>
+                                            </form>
+                                        </div>
+    
+                                    </div>
+                                    <div class="card text-center m-5 p-3">
+                                        <h5 class="card-title">You have registered for donation before. You have a minimum span of 15 days before donating the blood again.
+                                        Your previous donation to our camp and good cause is shown above.</h5>
+                                    </div>
+                                    ';
+                                    return;
+                                } else {
+                                    continue;
+                                }
+                               
                             } else {
                                 echo '<div class="card text-center m-5 ">
 
                                 <div class="card-body">
                                     <h5 class="card-title">', $camp_name, '</h5>
                                     <p class="card-text">', $location, '</p>
+                                    <p class="card-text">', $camp_date, '</p>
                                     <form action="appointment.php" method="post">
                                         <input value="', $camp_id, '" name="camp_id" hidden>
 

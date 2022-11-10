@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 03:00 PM
+-- Generation Time: Nov 10, 2022 at 08:26 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -73,16 +73,18 @@ INSERT INTO `addresses` (`id`, `area`, `city`, `state`) VALUES
 CREATE TABLE `bootcamps` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `address_id` int(11) NOT NULL
+  `address_id` int(11) NOT NULL,
+  `camp_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bootcamps`
 --
 
-INSERT INTO `bootcamps` (`id`, `name`, `address_id`) VALUES
-(1, 'Pimpri-Chinchwad Blood Center', 1),
-(2, 'Aundh Blood Donation Camp', 2);
+INSERT INTO `bootcamps` (`id`, `name`, `address_id`, `camp_date`) VALUES
+(1, 'Pimpri-Chinchwad Blood Center', 1, '2022-10-27'),
+(2, 'Aundh Blood Donation Camp', 2, '2022-12-15'),
+(3, 'Indian Red Cross Society', 3, '2022-12-23');
 
 -- --------------------------------------------------------
 
@@ -93,9 +95,16 @@ INSERT INTO `bootcamps` (`id`, `name`, `address_id`) VALUES
 CREATE TABLE `donations` (
   `id` int(11) NOT NULL,
   `donor_id` int(11) NOT NULL,
-  `bootcamp_id` int(11) NOT NULL,
-  `date` date NOT NULL
+  `bootcamp_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `donations`
+--
+
+INSERT INTO `donations` (`id`, `donor_id`, `bootcamp_id`) VALUES
+(15, 9, 1),
+(16, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +127,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `username`, `password`, `add_id`) VALUES
-(1, 'test', 'test@email.com', 1234567890, 'testuser', 'testuser123', 1);
+(10, 'test', 'test@email.com', 1234352345, 'testuser123123', '12345678', 2);
 
 --
 -- Indexes for dumped tables
@@ -165,19 +174,19 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `bootcamps`
 --
 ALTER TABLE `bootcamps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `donations`
 --
 ALTER TABLE `donations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
