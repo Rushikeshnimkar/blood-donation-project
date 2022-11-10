@@ -124,7 +124,7 @@
                                     <h5 class="card-title">', $camp_name, '</h5>
                                     <p class="card-text">', $location, '</p>
                                     <form>
-                                        <button type="submit" class="btn btn-secondary" disabled>Book your apointment</a>
+                                        <button type="submit" class="btn btn-success" disabled>Appointment Booked</a>
                                     </form>
                                 </div>
 
